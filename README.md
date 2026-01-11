@@ -1,12 +1,32 @@
 # Read data with Modbus-RTU 485
-### Modbus-RTU 485 Temp & Humidity sensor MD02
+### Modbus-RTU 485 T
+Temp & Humidity sensor MD02
+
+## Difference between sensor MD02 and XY-MD02
+
+| Model   | Voltage    | Raster       | Onboard-LED | Advantage                                                    |   |
+|---------|------------|--------------|-------------|--------------------------------------------------------------|---|
+| MD02    | DC 5-30V   | smaller 2,54 | Yes RED     |                                                              |   |
+| XY-MD02 | DC 5-30V   | 2,54         | No          | The larger grid makes it easier to perform a factory reset.  |   |
+
+<img src="difference_between_XY-MD02_MD02.jpg" width="800">
+
+### Register difference
+- XY-MD02 the values came as flot
+- MD02 the values came no flot and must divided by 10
+
+
+SERIAL_8N1 - 8 data bits, no parity, 1 stop bit (default)
+SERIAL_8N2 - 8 data bits, no parity, 2 stop bit
+SERIAL_8E1 - 8 data bits, even parity, 1 stop bit
+
 
 # Required 
 
 - PC
 - Modbus 485 serial to USB
 - Sensor XY-MD02
-- Voltage 12V DC
+- Voltage DC 5V - 28V for scenarios with long range
 - Wiring
 
 # Install
@@ -71,13 +91,35 @@ https://minimalmodbus.readthedocs.io/en/stable/usage.html#typical-usage
 Sensor datasheet:
 [xy-md02-manual.pdf](xy-md02-manual.pdf)
 
+[Better-documentation.pdf](Better-documentation.pdf)
 
 # Example 2
 
-#### Connection schemata for 5 sensors
+#### Connection schemata for 5 sensors in Modbus-RTU RS 485 system
 ![ConnectionShemata.png](ConnectionShemata.png)
 
-Create with https://lucid.app/lucidchart/ 'i become no money for that 🙄'
+Create with https://lucid.app/lucidchart/ 'i become no money for that 🙄' every sensor 
+have their own power connection with 12V.
+
+First change the device address `python ChangeAddress.py` connect one by one device
+and change the number.
+
+`python ChangeAddress.py`
+
+# HELP ERRORS & PROBLEMS
+
+#### No connection no receive data from device
+In some cases came sensors to me, I had ordered the labeling on
+case was incorrect after opening the device see on the pcb board
+the correct connection.
+
+<img src="Modbus-SHT20_MD02_incorrect_label.jpg" width="300">
+
+Remove the label and turn around.
+
+# Hardware reset of MD02
+Open the case and bridge the bin GND+RST tron power on and wait 20 seconds
+for restoring the factory defaults.
 
 # TODO
 - [ ] Add fritzing wiring png
