@@ -3,6 +3,12 @@ import minimalmodbus
 import serial
 import time
 
+
+### this file dont work todo create the funnction
+
+
+
+
 # slave address (in decimal)
 DEVICE_ADDRESS = 1
 # ENABLE/DISABLE communication debug mode

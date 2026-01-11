@@ -4,10 +4,10 @@ Temp & Humidity sensor MD02
 
 ## Difference between sensor MD02 and XY-MD02
 
-| Model   | Voltage    | Raster       | Onboard-LED | Advantage                                                    |   |
-|---------|------------|--------------|-------------|--------------------------------------------------------------|---|
-| MD02    | DC 5-30V   | smaller 2,54 | Yes RED     |                                                              |   |
-| XY-MD02 | DC 5-30V   | 2,54         | No          | The larger grid makes it easier to perform a factory reset.  |   |
+| Model   | Voltage    | Raster       | Onboard-LED | Advantage                                                    | Performence  |
+|---------|------------|--------------|-------------|--------------------------------------------------------------|--------------|
+| MD02    | DC 5-30V   | smaller 2,54 | Yes RED     |                                                              | A bit slower |
+| XY-MD02 | DC 5-30V   | 2,54         | No          | The larger grid makes it easier to perform a factory reset.  |              |
 
 <img src="difference_between_XY-MD02_MD02.jpg" width="800">
 

@@ -9,6 +9,8 @@ DEVICE_ADDRESS = 1
 DEVICE_DEBUG = True
 # Master PORT name -- Change as needed for your host.
 PORT_NAME = 'COM6'
+# Model type new or old default XY-MD02. Other MD02
+MODEL_TYPE = 'XY-MD02'
 
 # MODBUS instrument initialization
 instrument = minimalmodbus.Instrument(PORT_NAME, DEVICE_ADDRESS, debug=DEVICE_DEBUG)
@@ -18,18 +20,25 @@ instrument.serial.bytesize = 8
 instrument.serial.polarity = minimalmodbus.serial.PARITY_NONE
 instrument.serial.stopbits = 1
 instrument.mode = minimalmodbus.MODE_RTU
-instrument.serial.timeout = 0.2
+instrument.serial.timeout = 1.2
 
-
-# Read Humidity
-REGISTER_ADDRESS_HUMIDITY = 2
-REGISTER_NUMBER_DECIMALS = 1
+# Read register
+REGISTER_ADDRESS = 2
 ModBus_Command = 4
 
 
+# change the divider for model type
+match MODEL_TYPE:
+    case 'XY-MD02':
+        REGISTER_NUMBER_DECIMALS = 1
+    case 'MD02':
+        REGISTER_NUMBER_DECIMALS = 2
+    case _:
+        REGISTER_NUMBER_DECIMALS = 1
+
 while True:
     # Register number, number of decimals, function code
-    humidity = instrument.read_register(REGISTER_ADDRESS_HUMIDITY, REGISTER_NUMBER_DECIMALS, ModBus_Command)
+    humidity = instrument.read_register(REGISTER_ADDRESS, REGISTER_NUMBER_DECIMALS, ModBus_Command)
     try:
         print(f"Luftfeuchtigkeit: {humidity} %Rf")
     except IOError:
