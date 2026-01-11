@@ -71,8 +71,8 @@ def change_address(address, new_address):
         while True:
             # Register number, number of register, function code
             instrument.write_register(256, new_address, 0, 6)
-
-            time.sleep(1)
+            time.sleep(3)
+            # add todo register soft reset??
             # add CRC check
             try:
                 print(f"Changed address: {address} -> {new_address}")
@@ -109,6 +109,7 @@ while True:
         sys.exit()
     try:
         # test the new device connection
+        # todo add a routine to wait for restart device
         _check_new_address(new_address)
         print(f"New address work")
     except IOError:

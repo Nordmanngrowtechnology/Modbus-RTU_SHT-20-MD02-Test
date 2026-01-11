@@ -81,6 +81,22 @@ Temparatur: 26.3 °C
 ### Keep in mind XY-MD02 or MD02
 - There can use **UART** with Windows direct with a c++ script
 
+# Modbus register map
+
+| Model |                        | Register | Function code |
+|-------|------------------------|----------|---------------|
+| MD02  | set baudrate           | 257      | 6             |
+| MD02  | set new device address | 256      | 6             |
+
+
+# Response code
+ 
+#### Change slave baudrate to 9600
+
+|    | Function |    |    |    | New Baudrate |    |    |
+|----|----------|----|----|----|--------------|----|----|
+| 01 | 06       | 01 | 01 | 00 | 02           | 58 | 37 |
+
 
 ### Documentation
 
