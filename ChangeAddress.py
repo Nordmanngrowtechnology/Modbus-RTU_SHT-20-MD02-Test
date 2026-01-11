@@ -55,46 +55,65 @@ def _check_new_address(new_address):
 def change_address(address, new_address):
 
     # check new number 1-255
-    if 1 < new_address < 256:
+    if 1 <= new_address <= 255:
+
+
+        # Init the device with default connection
+        instrument = minimalmodbus.Instrument(PORT_NAME, address, debug=DEVICE_DEBUG)
+
+        instrument.serial.baudrate = 9600
+        instrument.serial.bytesize = 8
+        instrument.serial.polarity = minimalmodbus.serial.PARITY_NONE
+        instrument.serial.stopbits = 1
+        instrument.mode = minimalmodbus.MODE_RTU
+        instrument.serial.timeout = 1.2
+
+        while True:
+            # Register number, number of register, function code
+            instrument.write_register(256, new_address, 0, 6)
+
+            time.sleep(1)
+            # add CRC check
+            try:
+                print(f"Changed address: {address} -> {new_address}")
+            except IOError:
+                print("Failed change instrument address")
+            time.sleep(1)
+            instrument.serial.close()
+            # close connection
+    else:
         print("New address must between 1-255")
-        sys.exit()
+        sys.exit() #end def change_address
 
-    # Init the device with default connection
-    instrument = minimalmodbus.Instrument(PORT_NAME, address, debug=DEVICE_DEBUG)
-
-    instrument.serial.baudrate = 9600
-    instrument.serial.bytesize = 8
-    instrument.serial.polarity = minimalmodbus.serial.PARITY_NONE
-    instrument.serial.stopbits = 1
-    instrument.mode = minimalmodbus.MODE_RTU
-    instrument.serial.timeout = 1.2
-
-    while True:
-        # Register number, number of register, function code
-        instrument.write_register(256, new_address, 0, 6)
-
-        time.sleep(1)
-        # add CRC check
-        try:
-            print(f"Changed address: {address} -> {new_address}")
-        except IOError:
-            print("Failed change instrument address")
-        time.sleep(1)
-        instrument.serial.close()
-        # close connection
-
-
-# main function add console vars
+#########################################
+#
+#   main function add console vars
+#
+#########################################
 while True:
     try:
-        # test the new device connection
-        change_address(1,2)
+        old_address = int(input("Enter the old number of the device whose address we would like to change: "))
+        print("Your entry was: ",old_address)
+
+        new_address = int(input("Enter the new address we want to set: "))
+        print("Your entry was: ", new_address)
+
+        print("......")
+        print("#########################################################")
+
+        change_address(old_address, new_address)
+        print(f"New address was set to: {new_address}")
+    except IOError:
+        print("...Failed set new address...exit program! Use debug mode!")
         time.sleep(3)
-        _check_new_address(2)
+        sys.exit()
+    try:
+        # test the new device connection
+        _check_new_address(new_address)
         print(f"New address work")
     except IOError:
-        print("Failed to read from instrument")
-    time.sleep(1)
-    # close connection
+        print("The new address dont work...exit program! Use debug mode!")
+        time.sleep(1)
+        sys.exit()
 
 
