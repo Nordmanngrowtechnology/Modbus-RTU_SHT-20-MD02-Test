@@ -15,7 +15,7 @@ Temp & Humidity sensor MD02
 - XY-MD02 the values came as flot
 - MD02 the values came no flot and must divided by 10
 
-
+--- remove
 SERIAL_8N1 - 8 data bits, no parity, 1 stop bit (default)
 SERIAL_8N2 - 8 data bits, no parity, 2 stop bit
 SERIAL_8E1 - 8 data bits, even parity, 1 stop bit
