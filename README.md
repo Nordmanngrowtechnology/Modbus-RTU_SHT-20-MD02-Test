@@ -71,6 +71,14 @@ https://minimalmodbus.readthedocs.io/en/stable/usage.html#typical-usage
 Sensor datasheet:
 [xy-md02-manual.pdf](xy-md02-manual.pdf)
 
+
+# Example 2
+
+#### Connection schemata for 5 sensors
+![ConnectionShemata.png](ConnectionShemata.png)
+
+Create with https://lucid.app/lucidchart/ 'i become no money for that 🙄'
+
 # TODO
 - [ ] Add fritzing wiring png
 - [ ] Add single bus wiring 4 x sensor and write python script
