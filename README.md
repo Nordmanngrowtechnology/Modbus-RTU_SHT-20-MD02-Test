@@ -83,10 +83,11 @@ Temparatur: 26.3 °C
 
 # Modbus register map
 
-| Model |                        | Register | Function code |
-|-------|------------------------|----------|---------------|
-| MD02  | set baudrate           | 257      | 6             |
-| MD02  | set new device address | 256      | 6             |
+| Model   |                        | Register | Function code |
+|---------|------------------------|----------|---------------|
+| MD02    | set baudrate           | 257      | 6             |
+| MD02    | set new device address | 256      | 6             |
+| XY-MD02 | set baudrate           | 258      |               |
 
 
 # Response code

@@ -4,7 +4,7 @@ import serial
 import time
 
 # slave address (in decimal)
-DEVICE_ADDRESS = 2
+DEVICE_ADDRESS = 1
 # ENABLE/DISABLE communication debug mode
 DEVICE_DEBUG = True
 # Master PORT name -- Change as needed for your host.
@@ -20,7 +20,7 @@ instrument.serial.bytesize = 8
 instrument.serial.polarity = minimalmodbus.serial.PARITY_NONE
 instrument.serial.stopbits = 1
 instrument.mode = minimalmodbus.MODE_RTU
-instrument.serial.timeout = 1.2
+instrument.serial.timeout = 5.2
 
 # Read register
 REGISTER_ADDRESS = 1

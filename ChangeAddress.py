@@ -66,7 +66,7 @@ def change_address(address, new_address):
         instrument.serial.polarity = minimalmodbus.serial.PARITY_NONE
         instrument.serial.stopbits = 1
         instrument.mode = minimalmodbus.MODE_RTU
-        instrument.serial.timeout = 1.2
+        instrument.serial.timeout = 5
 
         while True:
             # Register number, number of register, function code
