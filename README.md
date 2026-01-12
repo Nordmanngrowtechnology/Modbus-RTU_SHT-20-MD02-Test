@@ -122,3 +122,5 @@ for restoring the factory defaults.
 - [ ] Add wiring png
 - [ ] Add single bus wiring 4 x sensor and write python script
 - [ ] Extend scrip for device address change
+- [ ] Add address change function
+- [ ] Add baudrate change function
