@@ -38,6 +38,19 @@ DEVICE_MD02 = {
         'number_registers': 2,
         'out_divider': 100
     },
+    'function_change_baudrate': {
+        'name': 'Change baudrate',
+        'description': 'Change baudrate the communication baudrate of slave',
+        'register_address': 0x0101,# 257
+        'modbus_function_code': 0x06,
+        'number_decimals': 0,
+        'baudrate': {
+            '2400': 0x00,
+            '4800': 0x01,
+            '9600': 0x02,
+        }
+
+    },
 
 }
 
@@ -78,6 +91,19 @@ DEVICE_XY_MD02 = {
         'modbus_function_code': 0x04,
         'number_registers': 2,
         'out_divider': 10
+    },
+    'function_change_baudrate': {
+        'name': 'Change baudrate',
+        'description': 'Change baudrate the communication baudrate of slave',
+        'register_address': 0x0102,# 258
+        'modbus_function_code': 0x06,
+        'number_decimals': 0,
+        'baudrate': {
+            '9600': 0x00,
+            '14400': 0x01,
+            '19200': 0x02,
+        }
+
     },
 
 }

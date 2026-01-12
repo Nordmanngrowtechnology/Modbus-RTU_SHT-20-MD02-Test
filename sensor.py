@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 import sys
+from operator import index
+
 import minimalmodbus
 import time
 import devices
@@ -98,6 +100,22 @@ def read_humidity_and_temp():
         instrument.serial.close()
         # close connection
 
+def change_baudrate(baudrate):
+    while True:
+
+        # Register number, number of register, function code
+        instrument.write_register(DEVICE['function_change_baudrate']['register_address'],
+                                          baudrate,
+                                             DEVICE['function_change_baudrate']['number_decimals'],
+                                          DEVICE['function_change_baudrate']['modbus_function_code'])
+        try:
+            print(f"Set Model Baudrate: {MODEL_TYPE}")
+            print(f"Baudrate: {DEVICE['function_change_baudrate']['baudrate'][baudrate]} HEX")
+        except IOError:
+            print("Failed to set new baudrate")
+        time.sleep(1)
+        instrument.serial.close()
+        # close connection
 
 # function list create
 function = ("to exit program","temperature", "humidity", "humi_and_temp", "read_address","change device address","change baudrate")
@@ -141,7 +159,14 @@ while True:
                 print("Attention change the device baudrate can lose connection!")
                 choice = str.lower(input("Do you really want to change the baudrate? Enter [Yes] or [No] :"))[:1]
                 if choice == "y":
-                    instrument.serial.close()  # todo add baudrate change function
+                    print("...........................................................................\r")
+                    for key, value in DEVICE['function_change_baudrate']['baudrate'].items():
+                        print("Supported baudrate:..(", index(value), ") = ", key)
+                    print("...........................................................................\r")
+                    baudrate = int(input("Select baudrate number:"))
+                    selection = list(DEVICE['function_change_baudrate']['baudrate'].values())[baudrate]
+                    change_baudrate(selection)
+
                     print(
                         "You need to disconnect the device from the power supply and restart it for the change to take effect.")
                 if choice == "n":

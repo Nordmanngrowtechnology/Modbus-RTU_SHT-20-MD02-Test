@@ -18,6 +18,8 @@ Temp & Humidity sensor MD02
 If the return value of humidity and temperature divide by 100 correct
 and had the sensor a red LED onboard so is it in most case MD02 version.
 
+Shown below in table difference in selectable baud rates
+
 
 # Required 
 
@@ -73,12 +75,12 @@ This device support this standard modbus 485 function codes.
 
 ## Modbus register map difference
 
-| Model    |                         | Register | Function code |
-|----------|-------------------------|----------|---------------|
-| MD02     | set baudrate            | 257      | 6             |
-| MD02     | set new device address  | 256      | 6             |
-| XY-MD02  | set baudrate            | 258      | 6             |
-| XY-MD02  | set new device address  | 257      | 6             |
+| Model    |                         | Register | Function code | Support                  |
+|----------|-------------------------|----------|---------------|--------------------------|
+| MD02     | set baudrate            | 257      | 6             | 0:2400, 1:4800, 2:9600   |
+| MD02     | set new device address  | 256      | 6             |                          |
+| XY-MD02  | set baudrate            | 258      | 6             | 0:9600, 1:14400, 2:19200 |
+| XY-MD02  | set new device address  | 257      | 6             |                          |
 
 ## Response code
  
