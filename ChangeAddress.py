@@ -12,17 +12,27 @@ REGISTER_NUMBER_DECIMALS = 1
 # (range: 0 to 255), baud rate (range: 4800bps to 9600bps), and parity method by themselves,
 # and these settings can be saved after power-off
 
-                        # slave address (in decimal)
-DEVICE_ADDRESS = 1      # connect to default address
-DEVICE_DEBUG = True     # ENABLE/DISABLE communication debug mode
-PORT_NAME = 'COM6'      # Master PORT name -- Change as needed for your host.
-MODEL_TYPE = 'XY-MD02'  # Model type new or old default XY-MD02. Other MD02
+# slave address (in decimal)
+DEVICE_ADDRESS = 1  # connect to default address
+DEVICE_DEBUG = True  # ENABLE/DISABLE communication debug mode
+PORT_NAME = 'COM6'  # Master PORT name -- Change as needed for your host.
+MODEL_TYPE = 'MD02'  # Model type new or old default XY-MD02. Other MD02
 
+# change the divider for model type
+match MODEL_TYPE:
+    case 'XY-MD02':
+        REGISTER_NUMBER_DECIMALS = 1
+        DEVICE_ADDRESS_MAX = 255
+    case 'MD02':
+        REGISTER_NUMBER_DECIMALS = 2
+        DEVICE_ADDRESS_MAX = 251
+    case _:
+        REGISTER_NUMBER_DECIMALS = 1
+        DEVICE_ADDRESS_MAX = 255
 
 
 def _check_new_address(new_address):
     # MODBUS instrument initialization
-    global REGISTER_NUMBER_DECIMALS
     test = minimalmodbus.Instrument(PORT_NAME, new_address, debug=DEVICE_DEBUG)
 
     test.serial.baudrate = 9600
@@ -31,15 +41,6 @@ def _check_new_address(new_address):
     test.serial.stopbits = 1
     test.mode = minimalmodbus.MODE_RTU
     test.serial.timeout = 1.2
-
-    # change the divider for model type
-    match MODEL_TYPE:
-        case 'XY-MD02':
-            REGISTER_NUMBER_DECIMALS = 1
-        case 'MD02':
-            REGISTER_NUMBER_DECIMALS = 2
-        case _:
-            REGISTER_NUMBER_DECIMALS = 1
 
     while True:
         # Register number, number of decimals, function code
@@ -52,11 +53,10 @@ def _check_new_address(new_address):
         test.serial.close()
         # test end close serial port on WINDOWS
 
+
 def change_address(address, new_address):
-
     # check new number 1-255
-    if 1 <= new_address <= 255:
-
+    if 1 <= new_address <= DEVICE_ADDRESS_MAX:
 
         # Init the device with default connection
         instrument = minimalmodbus.Instrument(PORT_NAME, address, debug=DEVICE_DEBUG)
@@ -70,7 +70,7 @@ def change_address(address, new_address):
 
         while True:
             # Register number, number of register, function code
-            instrument.write_register(256, new_address, 0, 6)
+            instrument.write_register(257, new_address, 0, 6)
             time.sleep(3)
             # add todo register soft reset??
             # add CRC check
@@ -83,7 +83,8 @@ def change_address(address, new_address):
             # close connection
     else:
         print("New address must between 1-255")
-        sys.exit() #end def change_address
+        sys.exit()  # end def change_address
+
 
 #########################################
 #
@@ -93,7 +94,7 @@ def change_address(address, new_address):
 while True:
     try:
         old_address = int(input("Enter the old number of the device whose address we would like to change: "))
-        print("Your entry was: ",old_address)
+        print("Your entry was: ", old_address)
 
         new_address = int(input("Enter the new address we want to set: "))
         print("Your entry was: ", new_address)
@@ -116,5 +117,3 @@ while True:
         print("The new address dont work...exit program! Use debug mode!")
         time.sleep(1)
         sys.exit()
-
-

@@ -13,12 +13,10 @@ Temp & Humidity sensor MD02
 
 ### Register difference
 - XY-MD02 the values came as flot
-- MD02 the values came no flot and must divided by 10
+- MD02 the values came no flot and must divided by 100
 
---- remove
-SERIAL_8N1 - 8 data bits, no parity, 1 stop bit (default)
-SERIAL_8N2 - 8 data bits, no parity, 2 stop bit
-SERIAL_8E1 - 8 data bits, even parity, 1 stop bit
+If the return value of humidity and temperature divide by 100 correct
+and had the sensor a red LED onboard so is it in most case MD02 version.
 
 
 # Required 
@@ -48,49 +46,41 @@ Open command line tool and navigate to project folder example:
 
 >>> C:\PyCharmMiscProject\Modbus-RTU_SHT-20-MD02-Test>
 ```
-Change the connection port in script ([temp.py](temp.py), [humidity.py](humidity.py), [both.py](both.py))
-to your experiment.
+Change the connection port in script ([sensor.py](sensor.py))
+
 
 Run the files you want with python in command line terminal example temperature:
 
-`python temp.py`
+`python sensor.py`
 
-```
-> C:\PyCharmMiscProject\Modbus-RTU_SHT-20-MD02-Test>python temp.py
-
-MinimalModbus debug mode. Create serial port COM6
-MinimalModbus debug mode. Will write to instrument (expecting 7 bytes back): 01 04 00 01 00 01 60 0A (8 bytes)
-MinimalModbus debug mode. Clearing serial buffers for port COM6
-MinimalModbus debug mode. No sleep required before write. Time since previous read: 556020781.36 ms, minimum silent period: 4.01 ms.
-MinimalModbus debug mode. Response from instrument: 01 04 02 01 07 F9 62 (7 bytes), roundtrip time: 0.2 ms. Timeout for reading: 200.0 ms.
-
-Temparatur: 26.3 °C
-
-```
-
-# In IDE use this running by clicking
-
-`python temp.py`
-
-`python humidity.py`
-
-`python both.py`
+Follow the instruction on screen and select the self-described function.
 
 
-
-### Keep in mind XY-MD02 or MD02
+###### Keep in mind XY-MD02 or MD02
 - There can use **UART** with Windows direct with a c++ script
 
-# Modbus register map
 
-| Model   |                        | Register | Function code |
-|---------|------------------------|----------|---------------|
-| MD02    | set baudrate           | 257      | 6             |
-| MD02    | set new device address | 256      | 6             |
-| XY-MD02 | set baudrate           | 258      |               |
+## Modbus function register
+This device support this standard modbus 485 function codes.
+
+| Modbus code int |                              |
+|-----------------|------------------------------|
+| 3               | Read keep register           |
+| 4               | Read input register          |
+| 6               | Write a single keep register |
+| 10              | Write more keep register     |
 
 
-# Response code
+## Modbus register map difference
+
+| Model    |                         | Register | Function code |
+|----------|-------------------------|----------|---------------|
+| MD02     | set baudrate            | 257      | 6             |
+| MD02     | set new device address  | 256      | 6             |
+| XY-MD02  | set baudrate            | 258      | 6             |
+| XY-MD02  | set new device address  | 257      | 6             |
+
+## Response code
  
 #### Change slave baudrate to 9600
 
@@ -106,22 +96,9 @@ The original documentation of the python extension: **MinimalModbus**
 https://minimalmodbus.readthedocs.io/en/stable/usage.html#typical-usage
 
 Sensor datasheet:
+[MD02-manual.pdf](MD02-manual.pdf)
+
 [xy-md02-manual.pdf](xy-md02-manual.pdf)
-
-[Better-documentation.pdf](Better-documentation.pdf)
-
-# Example 2
-
-#### Connection schemata for 5 sensors in Modbus-RTU RS 485 system
-![ConnectionShemata.png](ConnectionShemata.png)
-
-Create with https://lucid.app/lucidchart/ 'i become no money for that 🙄' every sensor 
-have their own power connection with 12V.
-
-First change the device address `python ChangeAddress.py` connect one by one device
-and change the number.
-
-`python ChangeAddress.py`
 
 # HELP ERRORS & PROBLEMS
 
@@ -134,10 +111,14 @@ the correct connection.
 
 Remove the label and turn around.
 
-# Hardware reset of MD02
+# Hardware reset of MD02 and XY-MD02
+If you lose the connection to the devices by losing the device address.
+
+## Do a hardware reset:
 Open the case and bridge the bin GND+RST tron power on and wait 20 seconds
 for restoring the factory defaults.
 
 # TODO
-- [ ] Add fritzing wiring png
+- [ ] Add wiring png
 - [ ] Add single bus wiring 4 x sensor and write python script
+- [ ] Extend scrip for device address change
