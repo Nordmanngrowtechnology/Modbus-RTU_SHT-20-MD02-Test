@@ -13,7 +13,7 @@ DEVICE_DEBUG = True
 # Master PORT name -- Change as needed for your host.
 PORT_NAME = 'COM6'
 # Model type new or old default XY-MD02. Other MD02
-MODEL_TYPE = 'MD02'
+MODEL_TYPE = 'XY-MD02'
 TIMEOUT = 3
 
 # settings for different models
@@ -110,8 +110,8 @@ def change_baudrate(baudrate):
                                           DEVICE['function_change_baudrate']['modbus_function_code'])
         try:
             print(f"Set Model Baudrate: {MODEL_TYPE}")
-            print(f"Baudrate: {DEVICE['function_change_baudrate']['baudrate'][baudrate]} HEX")
-        except IOError:
+            print(f"Baudrate: {baudrate} HEX")
+        except minimalmodbus.ModbusException:
             print("Failed to set new baudrate")
         time.sleep(1)
         instrument.serial.close()
@@ -161,12 +161,12 @@ while True:
                 if choice == "y":
                     print("...........................................................................\r")
                     for key, value in DEVICE['function_change_baudrate']['baudrate'].items():
-                        print("Supported baudrate:..(", index(value), ") = ", key)
+                        print("Supported baudrate:..(", key, ") = ", index(value))
                     print("...........................................................................\r")
                     baudrate = int(input("Select baudrate number:"))
-                    selection = list(DEVICE['function_change_baudrate']['baudrate'].values())[baudrate]
+                    selection = int(DEVICE['function_change_baudrate']['baudrate'][baudrate])
                     change_baudrate(selection)
-
+                    # todo baudrate change get response from RX and handle exceptions
                     print(
                         "You need to disconnect the device from the power supply and restart it for the change to take effect.")
                 if choice == "n":

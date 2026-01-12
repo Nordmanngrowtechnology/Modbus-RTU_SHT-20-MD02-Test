@@ -45,9 +45,9 @@ DEVICE_MD02 = {
         'modbus_function_code': 0x06,
         'number_decimals': 0,
         'baudrate': {
-            '2400': 0x00,
-            '4800': 0x01,
-            '9600': 0x02,
+            0: 2400,
+            1: 4800,
+            2: 9600,
         }
 
     },
@@ -99,9 +99,9 @@ DEVICE_XY_MD02 = {
         'modbus_function_code': 0x06,
         'number_decimals': 0,
         'baudrate': {
-            '9600': 0x00,
-            '14400': 0x01,
-            '19200': 0x02,
+            0: 9600,
+            1: 14400,
+            2: 19200,
         }
 
     },

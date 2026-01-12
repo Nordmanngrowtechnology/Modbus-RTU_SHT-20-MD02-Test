@@ -126,3 +126,7 @@ for restoring the factory defaults.
 - [ ] Extend scrip for device address change
 - [ ] Add address change function
 - [x] ~~Add baudrate change function~~
+- [ ] Add function read keep register 0x03 address 0x0102 read baudrate
+- [ ] Add function read keep register 0x03 address 0x0101 read device address with device id 0x00 ???
+- Add option for set baud
+- Add option for set device id
