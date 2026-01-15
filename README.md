@@ -1,3 +1,14 @@
+# XY-MD02: Get Modbus RS485 data with Python
+With this python scrypt here you can receive data from temperature & humidity sensors like SHT20
+with MODBUS RS 485 transponder: 
+##### Supported
+- XY-MD01
+- MD02
+- XY-MD02
+
+Here you can run this python script
+`python sensor.py` before it use read the documentation.
+
 # Temperature & Humidity sensor YX-MD02 or MD02
 If you have a sensor models like MD02 or clones you are right here to get information
 to handle a MODBUS RS 485 connection to it.
