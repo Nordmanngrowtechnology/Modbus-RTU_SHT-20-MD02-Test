@@ -13,7 +13,8 @@ DEVICE_DEBUG = True
 # Master PORT name -- Change as needed for your host.
 PORT_NAME = 'COM6'
 # Model type new or old default XY-MD02. Other MD02
-MODEL_TYPE = 'XY-MD02'
+#MODEL_TYPE = 'XY-MD02'
+MODEL_TYPE = 'MD02'
 TIMEOUT = 3
 
 # settings for different models

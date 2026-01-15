@@ -97,7 +97,7 @@ Clone project via git or download project files
 `git clone https://github.com/Nordmanngrowtechnology/Modbus-RTU_SHT-20-MD02-Test.git`
 
 
-# Usage
+## Usage of python script
 
 Open command line tool and navigate to project folder example:
 
@@ -109,7 +109,7 @@ Open command line tool and navigate to project folder example:
 Change the connection port in script ([sensor.py](sensor.py))
 
 
-Run the files you want with python in command line terminal example temperature:
+With this script you can test every thing:
 
 `python sensor.py`
 
@@ -160,6 +160,15 @@ The voltage must be sufficient, and the shielding is only connected once.
 
 1. Configure the sensors using the script to use the same baud rate 
 2. and assign the individual addresses 1, 2, 3...
+
+### Examples
+[ChangeAddress.py](ChangeAddress.py)
+
+[ChangeBaudrate.py](ChangeBaudrate.py)
+
+#### Hardware info
+- MCU: N76e003at20 handle the software
+- SP3485 Half-Duplex RS-485 Transceivers
 
 # TODO
 - [ ] Add wiring png
