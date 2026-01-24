@@ -205,14 +205,14 @@ DEVICE_SHT30_ASIAN = {
         'name': 'Read temperature',
         'description': 'Read the temperature from slave',
         'register_address': 0x0001,
-        'modbus_function_code': 0x04,
+        'modbus_function_code': 0x03,
         'number_decimals': 1,
     },
     'function_read_humidity': {
         'name': 'Read humidity',
         'description': 'Read the humidity from slave',
-        'register_address': 0x0002,
-        'modbus_function_code': 0x04,
+        'register_address': 0x0000,
+        'modbus_function_code': 0x03,
         'number_decimals': 1,
     },
     'function_read_device_address': {

@@ -35,15 +35,18 @@ There are many, many sensors with the same name but different values. Often, the
 - Voltage 24V DC
 - Baudrate 9600
 - Device address 1
+- Power consume 0.1 Ampere
+- Bus resistor 120kOhm (Many devices the last get 0.5W)
 
 ##### Hardware difference *many other types exist with same name
-| Product Model | Voltage  | Built-in sensor model | Advantage                                                    | PCB Raster   | Onboard-LED | Performence  |
-|---------------|----------|-----------------------|--------------------------------------------------------------|--------------|-------------|--------------|
-| MD02          | 5~30V DC |                       |                                                              | smaller 2,54 | Yes RED     | A bit slower |
-| XY-MD02       | 5~30V DC |                       | The larger grid makes it easier to perform a factory reset.  | 2,54         | No          |              |
-| SHT30-ASIAN   | 5~28V DC |                       |                                                              |              |             |              |
-| EID041-G01    | 5~36V DC | AHT20                 |                                                              |              | Yes Green   |              |
-| EID041-G01S   | 5~36V DC | SHT30                 |                                                              |              | Yes Green   |              |
+| Product Model | Voltage  | Built-in sensor model | Advantage                                                    | PCB Raster   | Onboard-LED | Performence  | Doc                                                        |
+|---------------|----------|-----------------------|--------------------------------------------------------------|--------------|-------------|--------------|------------------------------------------------------------|
+| XY-MD01       | 4~30V DC |                       |                                                              |              |             |              | [XY-MD01-manual.pdf](datasheets/XY-MD01-manual.pdf)        |
+| MD02          | 5~30V DC |                       |                                                              | smaller 2,54 | Yes RED     | A bit slower | [MD02-manual.pdf](datasheets/MD02-manual.pdf)              |
+| XY-MD02       | 5~30V DC |                       | The larger grid makes it easier to perform a factory reset.  | 2,54         | No          |              | [XY-MD02-manual.pdf](datasheets/XY-MD02-manual.pdf)        |
+| SHT30-ASIAN   | 5~28V DC |                       |                                                              |              | Yes Blue    |              |                                                            |
+| EID041-G01    | 5~36V DC | AHT20                 |                                                              |              | Yes Green   |              | [EID041-G01-manual.pdf](datasheets/EID041-G01-manual.pdf)  |
+| EID041-G01S   | 5~36V DC | SHT30                 |                                                              |              | Yes Green   |              | [EID041-G01-manual.pdf](datasheets/EID041-G01-manual.pdf)  |
 
 <img src="images/difference_between_XY-MD02_MD02.jpg" width="800">
 
@@ -51,12 +54,12 @@ There are many, many sensors with the same name but different values. Often, the
 Shown below in table difference in selectable baudrate
 
 ##### Register difference
-| Modellable | Description            | Register (decimal) | Function code (hex) | Supported baudrate (default both 9600) |
-|------------|------------------------|--------------------|---------------------|----------------------------------------|
-| MD02       | set baudrate           | 257                | 0x06                | 2400, 4800, 9600                       |
-| MD02       | set new device address | 256                | 0x06                |                                        |
-| XY-MD02    | set baudrate           | 258                | 0x06                | 9600, 14400, 19200                     |
-| XY-MD02    | set new device address | 257                | 0x06                |                                        |
+| Modellable | Description            | Register (decimal) | Function code (hex) | Supported baudrate (default both 9600) |   |
+|------------|------------------------|--------------------|---------------------|----------------------------------------|---|
+| MD02       | set baudrate           | 257                | 0x06                | 2400, 4800, 9600                       |   |
+| MD02       | set new device address | 256                | 0x06                |                                        |   |
+| XY-MD02    | set baudrate           | 258                | 0x06                | 9600, 14400, 19200                     |   |
+| XY-MD02    | set new device address | 257                | 0x06                |                                        |   |
 
 - XY-MD02 the values came as flot
 - MD02 the values came no flot and must divided by 100
@@ -138,11 +141,11 @@ With this script you can test every thing:
 Follow the instruction on screen and select the self-described function.
 
 
-###### Keep in mind XY-MD02 or MD02
-- There can use **UART** with Windows direct with a c++ script
+###### Keep in mind (XY-MD02 or MD02, clones)
+- There can use **UART** with Windows direct with a c++ script ;-)
 
 
-### Modbus function register official supported by both devices
+### Function register specification MODBUS RS 485
 
 | Modbus code int |                              |
 |-----------------|------------------------------|
@@ -153,7 +156,7 @@ Follow the instruction on screen and select the self-described function.
 
 
 
-## Function as hex XY-MD02
+## Example: Function as hex XY-MD02
 
 | Function                 | Device address | Modbus code | Register | Register |    |    |    |    |
 |--------------------------|----------------|-------------|----------|----------|----|----|----|----|
@@ -172,10 +175,11 @@ https://minimalmodbus.readthedocs.io/en/stable/usage.html#typical-usage
 Sensor datasheet:
 [MD02-manual.pdf](datasheets/MD02-manual.pdf)
 
-[xy-md02-manual.pdf](datasheets/xy-md02-manual.pdf)
+[xy-md02-manual.pdf](datasheets/XY-MD02-manual.pdf)
 
 
 # Additional information
+Attention misconfiguration can lose the connection permanently.
 
 The use of multiple sensors on a single bus line. The sensors must have the same baud rate. 
 The voltage must be sufficient, and the shielding is only connected once.
@@ -201,3 +205,4 @@ The voltage must be sufficient, and the shielding is only connected once.
 - [ ] Add function read keep register 0x03 address 0x0101 read device address with device id 0x00 ???
 - [ ] Add option for set baud
 - [ ] Add option for set device id
+- [ ] Add more devices EID041, ASIA

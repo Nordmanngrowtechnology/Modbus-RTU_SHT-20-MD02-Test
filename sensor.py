@@ -32,7 +32,8 @@ PORT_NAME = 'COM6'          # on Windows usb port 6 = COM6
 
 # Enter your model device here supported device you can see in the devices.py file.
 #MODEL_TYPE = 'XY-MD02'
-MODEL_TYPE = 'MD02'
+#MODEL_TYPE = 'MD02'
+MODEL_TYPE = 'SHT30-ASIAN'
 
 # The timeout so long wait the script for response
 TIMEOUT = 3 # 3 seconds is a very long time out 0.3 is normal enough.
@@ -46,10 +47,12 @@ TIMEOUT = 3 # 3 seconds is a very long time out 0.3 is normal enough.
 
 # settings for different models
 match MODEL_TYPE:
-    case 'XY-MD02':
-        DEVICE = devices.DEVICES['XY-MD02']
     case 'MD02':
         DEVICE = devices.DEVICES['MD02']
+    case 'XY-MD02':
+        DEVICE = devices.DEVICES['XY-MD02']
+    case 'SHT30-ASIAN':
+        DEVICE = devices.DEVICES['SHT30-ASIAN']
     case _:
         DEVICE = devices.DEVICES['MD02']
 
