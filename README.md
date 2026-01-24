@@ -2,9 +2,15 @@
 With this python scrypt here you can receive data from temperature & humidity sensors like SHT20
 with MODBUS RS 485 transponder: 
 ##### Supported
-- XY-MD01
-- MD02
-- XY-MD02
+| Product Model | Synonym  |
+|---------------|----------|
+| XY-MD01       |          |
+| MD02          |          |
+| XY-MD02       |          |
+| SHT30-ASIAN   |          |
+| EID041-G01    |          |
+| EID041-G01S   |          |
+
 
 ... more coming soon. Or open [issues](https://github.com/Nordmanngrowtechnology/Modbus-RTU_SHT-20-MD02-Test/issues)
 
