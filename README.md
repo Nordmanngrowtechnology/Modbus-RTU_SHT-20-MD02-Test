@@ -1,10 +1,12 @@
-# XY-MD02: Get Modbus RS485 data with Python
+# Get Modbus RS485 data with Python
 With this python scrypt here you can receive data from temperature & humidity sensors like SHT20
 with MODBUS RS 485 transponder: 
 ##### Supported
 - XY-MD01
 - MD02
 - XY-MD02
+
+... more coming soon. Or open [issues](https://github.com/Nordmanngrowtechnology/Modbus-RTU_SHT-20-MD02-Test/issues)
 
 Here you can run this python script
 `python sensor.py` before it use read the documentation.
@@ -28,13 +30,22 @@ differences between the available models.
 If you are very interested in the differences, 
 I recommend looking at this file. [devices.py](devices.py) (Register difference)
 
-##### Hardware difference
-| Model   | Voltage    | Raster       | Onboard-LED | Advantage                                                    | Performence  |
-|---------|------------|--------------|-------------|--------------------------------------------------------------|--------------|
-| MD02    | DC 5-30V   | smaller 2,54 | Yes RED     |                                                              | A bit slower |
-| XY-MD02 | DC 5-30V   | 2,54         | No          | The larger grid makes it easier to perform a factory reset.  |              |
+## In most case defaults
+There are many, many sensors with the same name but different values. Often, the data provided is inaccurate.
+- Voltage 24V DC
+- Baudrate 9600
+- Device address 1
 
-<img src="difference_between_XY-MD02_MD02.jpg" width="800">
+##### Hardware difference *many other types exist with same name
+| Product Model | Voltage  | Built-in sensor model | Advantage                                                    | PCB Raster   | Onboard-LED | Performence  |
+|---------------|----------|-----------------------|--------------------------------------------------------------|--------------|-------------|--------------|
+| MD02          | 5~30V DC |                       |                                                              | smaller 2,54 | Yes RED     | A bit slower |
+| XY-MD02       | 5~30V DC |                       | The larger grid makes it easier to perform a factory reset.  | 2,54         | No          |              |
+| SHT30-ASIAN   | 5~28V DC |                       |                                                              |              |             |              |
+| EID041-G01    | 5~36V DC | AHT20                 |                                                              |              | Yes Green   |              |
+| EID041-G01S   | 5~36V DC | SHT30                 |                                                              |              | Yes Green   |              |
+
+<img src="images/difference_between_XY-MD02_MD02.jpg" width="800">
 
 
 Shown below in table difference in selectable baudrate
@@ -66,7 +77,7 @@ the correct connection. This leads to incorrect wiring and malfunction.
 
 The photo here shows an MD02 sensor with an incorrect label. The PCB shows how it should be labeled correctly.
 
-<img src="Modbus-SHT20_MD02_incorrect_label.jpg" width="300">
+<img src="images/Modbus-SHT20_MD02_incorrect_label.jpg" width="300">
 
 The best thing to do is to peel off the label and turn it so that it's correct if it's wrong.
 
@@ -159,9 +170,9 @@ The original documentation of the python extension: **MinimalModbus**
 https://minimalmodbus.readthedocs.io/en/stable/usage.html#typical-usage
 
 Sensor datasheet:
-[MD02-manual.pdf](MD02-manual.pdf)
+[MD02-manual.pdf](datasheets/MD02-manual.pdf)
 
-[xy-md02-manual.pdf](xy-md02-manual.pdf)
+[xy-md02-manual.pdf](datasheets/xy-md02-manual.pdf)
 
 
 # Additional information
@@ -173,9 +184,9 @@ The voltage must be sufficient, and the shielding is only connected once.
 2. and assign the individual addresses 1, 2, 3...
 
 ### Examples
-[ChangeAddress.py](ChangeAddress.py)
+[ChangeAddress.py](examples/ChangeAddress.py)
 
-[ChangeBaudrate.py](ChangeBaudrate.py)
+[ChangeBaudrate.py](examples/ChangeBaudrate.py)
 
 #### Hardware info
 - MCU: N76e003at20 handle the software

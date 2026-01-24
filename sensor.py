@@ -1,21 +1,48 @@
 #!/usr/bin/env python
+# https://github.com/Nordmanngrowtechnology/Modbus-RTU_SHT-20-MD02-Test
+# Description:
+# Yes this is the main file for run the communication with different types of sensors.
+# Run this file in console.
+# Navigate in console to this file location and run it with console command:
+# python sensor.py
+
+# **************** DFAULT INCLUDES        ****************************************
+# **************** NOTHING TO CHANGE HERE ****************************************
+# ********************************************************************************
 import sys
 from operator import index
-
 import minimalmodbus
 import time
 import devices
+# ********************************************************************************
 
-# slave address (in decimal)
+
+# **************** ADD YOUR HARDWARE PROPERTY        *****************************
+# ********************************************************************************
+
+# The slave address (in decimal) of your connected device in most case: 1
 DEVICE_ADDRESS = 1
-# ENABLE/DISABLE communication debug mode
+
+# ENABLE/DISABLE communication debug mode yes we won debugging mode on
 DEVICE_DEBUG = True
-# Master PORT name -- Change as needed for your host.
-PORT_NAME = 'COM6'
-# Model type new or old default XY-MD02. Other MD02
+
+# Master PORT name -- Change as needed for your host in most case connect your device with a 485 RS to USB dongle.
+#PORT_NAME = '/dev/ttyUSB0' # on Linux usp port 0 = ttyUSB0
+PORT_NAME = 'COM6'          # on Windows usb port 6 = COM6
+
+# Enter your model device here supported device you can see in the devices.py file.
 #MODEL_TYPE = 'XY-MD02'
 MODEL_TYPE = 'MD02'
-TIMEOUT = 3
+
+# The timeout so long wait the script for response
+TIMEOUT = 3 # 3 seconds is a very long time out 0.3 is normal enough.
+
+
+# **************** END OF YOUR SETTING NOTHING MORE TO DO   **********************
+# ********************************************************************************
+# ********************************************************************************
+
+
 
 # settings for different models
 match MODEL_TYPE:
