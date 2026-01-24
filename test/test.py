@@ -61,7 +61,7 @@ DEVICE_ADDRESS = 1
 DEVICE_DEBUG = True
 PORT_NAME = 'COM6'
 TIMEOUT = 3
-REGISTER = 0x0000 #
+REGISTER = 0x0101 #
 MODBUS_CODE = 0x03
 #
 ###############################
@@ -87,8 +87,8 @@ print ("\n********************\n")
 
 while True:
     # Register number, number of register, function code
-    #value = instrument.read_registers(REGISTER,1,MODBUS_CODE)
-    value = instrument.read_register(REGISTER, 1, MODBUS_CODE)
+    #value = instrument.read_registers(REGISTER,2,MODBUS_CODE)
+    value = instrument.read_register(REGISTER, 0, MODBUS_CODE)
     try:
         print(f" {value}")
 
