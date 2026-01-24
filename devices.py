@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+# THIS FILE CONTAIN THE DEVICE VARIABLES FOR DIFFERENT MODELS
+# HAVE YOU MORE MODELS OR INFORMATION PLEAS OPEN ISSUES ON https://github.com/Nordmanngrowtechnology/Modbus-RTU_SHT-20-MD02-Test/issues
+
 # Description of the device model: XY-MD01
 # Standard settings und function dictionary
 DEVICE_XY_MD01 = {

@@ -1,4 +1,8 @@
 # !/usr/bin/env python
+
+# This file is only for test by my before add new sensor models
+
+
 import minimalmodbus
 import time
 
