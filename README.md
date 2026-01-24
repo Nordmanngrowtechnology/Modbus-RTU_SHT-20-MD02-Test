@@ -104,11 +104,12 @@ a hardware reset can help.
 
 #### Hardware reset works:
 Turn power of and disconnected the device from power. Open the case and bridge the pin GND to RST 
-turn the power on and wait 20 seconds so device rewrite the factory defaults to the register.
+turn the power on and wait 20 seconds so device rewrite the factory defaults to the register. Remove
+the bridge and turn the power on. The factory reset is done.
 
 This can be quite difficult as some models have a 1.27 mm PCB grid.
 
-# Test setup
+# BUILD: A test setup
 
 ---
 
