@@ -39,29 +39,29 @@ There are many, many sensors with the same name but different values. Often, the
 - Bus resistor 120kOhm (Many devices the last get 0.5W)
 
 ##### Hardware difference *many other types exist with same name
-| Product Model | Voltage  | Built-in sensor model | Advantage                                                    | PCB Raster   | Onboard-LED | Performence  | Doc                                                        |
-|---------------|----------|-----------------------|--------------------------------------------------------------|--------------|-------------|--------------|------------------------------------------------------------|
-| XY-MD01       | 4~30V DC |                       |                                                              |              |             |              | [XY-MD01-manual.pdf](datasheets/XY-MD01-manual.pdf)        |
-| MD02          | 5~30V DC |                       |                                                              | smaller 2,54 | Yes RED     | A bit slower | [MD02-manual.pdf](datasheets/MD02-manual.pdf)              |
-| XY-MD02       | 5~30V DC |                       | The larger grid makes it easier to perform a factory reset.  | 2,54         | No          |              | [XY-MD02-manual.pdf](datasheets/XY-MD02-manual.pdf)        |
-| SHT30-ASIAN   | 5~28V DC |                       |                                                              |              | Yes Blue    |              |                                                            |
-| EID041-G01    | 5~36V DC | AHT20                 |                                                              |              | Yes Green   |              | [EID041-G01-manual.pdf](datasheets/EID041-G01-manual.pdf)  |
-| EID041-G01S   | 5~36V DC | SHT30                 |                                                              |              | Yes Green   |              | [EID041-G01-manual.pdf](datasheets/EID041-G01-manual.pdf)  |
+| Product Model | Voltage  | Built-in sensor model | Advantage                                                    | PCB Raster   | Onboard-LED | Performence  | Doc                                                        | Tranciver |
+|---------------|----------|-----------------------|--------------------------------------------------------------|--------------|-------------|--------------|------------------------------------------------------------|-----------|
+| XY-MD01       | 4~30V DC |                       |                                                              |              |             |              | [XY-MD01-manual.pdf](datasheets/XY-MD01-manual.pdf)        |           |
+| MD02          | 5~30V DC |                       |                                                              | smaller 2,54 | Yes RED     | A bit slower | [MD02-manual.pdf](datasheets/MD02-manual.pdf)              |           |
+| XY-MD02       | 5~30V DC |                       | The larger grid makes it easier to perform a factory reset.  | 2,54         | No          |              | [XY-MD02-manual.pdf](datasheets/XY-MD02-manual.pdf)        |           |
+| SHT30-ASIAN   | 5~28V DC |                       |                                                              |              | Yes Blue    |              |                                                            | TP8485E   |
+| EID041-G01    | 5~36V DC | AHT20                 |                                                              |              | Yes Green   |              | [EID041-G01-manual.pdf](datasheets/EID041-G01-manual.pdf)  |           |
+| EID041-G01S   | 5~36V DC | SHT30                 |                                                              |              | Yes Green   |              | [EID041-G01-manual.pdf](datasheets/EID041-G01-manual.pdf)  |           |
 
 <img src="images/difference_between_XY-MD02_MD02.jpg" width="800">
 
 # Hardware table
 
-| Model       | Image                                                                | Default |
-|-------------|----------------------------------------------------------------------|---------|
-| XY-MD01     |                                                                      |         |
-| MD02        | ![ModbusSensor_MD02.jpg](images/ModbusSensor_MD02.jpg)               |         |
-| SHT30-ASIAN | ![ModbusSensor_SHT30_ASIA.jpeg](images/ModbusSensor_SHT30_ASIA.jpeg) |         |
-| XY-MD02     | ![ModbusSensor_XY-MD02.jpg](images/ModbusSensor_XY-MD02.jpg)         |         |
-|             |                                                                      |         |
-|             |                                                                      |         |
-|             |                                                                      |         |
-|             |                                                                      |         |
+| Model        | Image                                                                | Default |
+|--------------|----------------------------------------------------------------------|---------|
+| XY-MD01      |                                                                      |         |
+| MD02         | ![ModbusSensor_MD02.jpg](images/ModbusSensor_MD02.jpg)               |         |
+| XY-MD02      | ![ModbusSensor_XY-MD02.jpg](images/ModbusSensor_XY-MD02.jpg)         |         |
+| SHT30-ASIAN  | ![ModbusSensor_SHT30_ASIA.jpeg](images/ModbusSensor_SHT30_ASIA.jpeg) |         |
+| EID041-G01   | ![EID041-G01.png](images/EID041-G01.png)                             |         |
+| EID041-G01S  | ![EID041-G01S.png](images/EID041-G01S.png)                           |         |
+|              |                                                                      |         |
+|              |                                                                      |         |
 
 
 Shown below in table difference in selectable baudrate
