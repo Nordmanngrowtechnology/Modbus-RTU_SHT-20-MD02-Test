@@ -50,10 +50,23 @@ There are many, many sensors with the same name but different values. Often, the
 
 <img src="images/difference_between_XY-MD02_MD02.jpg" width="800">
 
+# Hardware table
+
+| Model       | Image                                                                | Default |
+|-------------|----------------------------------------------------------------------|---------|
+| XY-MD01     |                                                                      |         |
+| MD02        | ![ModbusSensor_MD02.jpg](images/ModbusSensor_MD02.jpg)               |         |
+| SHT30-ASIAN | ![ModbusSensor_SHT30_ASIA.jpeg](images/ModbusSensor_SHT30_ASIA.jpeg) |         |
+| XY-MD02     | ![ModbusSensor_XY-MD02.jpg](images/ModbusSensor_XY-MD02.jpg)         |         |
+|             |                                                                      |         |
+|             |                                                                      |         |
+|             |                                                                      |         |
+|             |                                                                      |         |
+
 
 Shown below in table difference in selectable baudrate
 
-##### Register difference
+##### Example: Register difference
 | Modellable | Description            | Register (decimal) | Function code (hex) | Supported baudrate (default both 9600) |   |
 |------------|------------------------|--------------------|---------------------|----------------------------------------|---|
 | MD02       | set baudrate           | 257                | 0x06                | 2400, 4800, 9600                       |   |
