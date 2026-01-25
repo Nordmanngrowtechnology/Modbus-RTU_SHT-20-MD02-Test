@@ -14,6 +14,11 @@ with MODBUS RS 485 transponder:
 
 ... more coming soon. Or open [issues](https://github.com/Nordmanngrowtechnology/Modbus-RTU_SHT-20-MD02-Test/issues)
 
+# Setup
+Install required library's for python
+`pip install -r requirements.txt`
+
+# Use tool
 Here you can run this python script
 `python sensor.py` before it use read the documentation.
 
